@@ -20,7 +20,7 @@ SHORT ANSWERS:
     // TODO FOR HOMEWORK: Answer each question, and note many don't have a 'right answer' so just answer honestly
     [ ] The MP3Player is a console application, what features do you wish were added?
         // ANSWER HERE: In the current program, when you play a song from playlist and you select 'Next' from the menu,
-        the played song will be removed or deleted from the playlist. The song is being deleted because of Line 270 (songQueue.remove(0);)
+        the song in the queue will be removed or deleted from the playlist. The song is being deleted because of Line 270 (songQueue.remove(0);)
         from the MP3Player class under playPlaylist method. Similar to an actual MP3 player, the list of song in the playlist should
         remain the same after the songs are played.
 
