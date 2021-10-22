@@ -256,10 +256,11 @@ public class MP3Player {
         // Sets the song queue to the playlist and sets the playNextSong to true
         songQueue = playlistSongs;
         boolean playNextSong = true;
-
+        int counter = 0;
         // Loops infinitely till the user doesn't want the next song to play
         while(playNextSong) {
             // If there are no remaining songs to play break out of the loop
+
             if (songQueue.isEmpty()) {
                 break;
             }
@@ -270,6 +271,7 @@ public class MP3Player {
 
             // Plays the song and waits for user input on whether the next song in the playlist should be played
             playNextSong = playSong(songToPlay);
+            counter = counter + 1;
         }
 
         // Prints a message to the user when the playlist is no longer being played

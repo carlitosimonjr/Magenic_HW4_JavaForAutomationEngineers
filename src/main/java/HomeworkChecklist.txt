@@ -19,23 +19,51 @@ TEST TASKS:
 SHORT ANSWERS:
     // TODO FOR HOMEWORK: Answer each question, and note many don't have a 'right answer' so just answer honestly
     [ ] The MP3Player is a console application, what features do you wish were added?
-        // ANSWER HERE:
+        // ANSWER HERE: In the current program, when you play a song from playlist and you select 'Next' from the menu,
+        the played song will be removed or deleted from the playlist. The song is being deleted because of Line 270 (songQueue.remove(0);)
+        from the MP3Player class under playPlaylist method. Similar to an actual MP3 player, the list of song in the playlist should
+        remain the same after the songs are played.
 
     [ ] Pick any feature you mentioned in the last question. Do you think you could implement that feature with your current knowledge? If yes explain the basic thought processing of adding that feature, if not explain why.
-        // ANSWER HERE:
+        // ANSWER HERE: Yes, I'll remove the statement that will delete the song after it is played and 'Next' option is selected from the menu.
+        Also, instead of passing the '0' as 'index' to get the song from the SongQueue, I'll replace it with a variable (i.e. counter) that will increment
+        after a song is played and pass it as an 'index' to get the song from the SongQueue. See sample code below.
+
+        MP3Player class > playPlaylist method (starts at Line 246)
+
+                // Sets the song queue to the playlist and sets the playNextSong to true
+                songQueue = playlistSongs;
+                boolean playNextSong = true;
+                int counter = 0; // I'll add this variable to hold the index when getting the song from the queue
+
+                while(playNextSong) {
+                    // If there are no remaining songs to play break out of the loop
+
+                    if (songQueue.isEmpty()) {
+                        break;
+                    }
+
+                    // Gets the first song in the array
+                    Song songToPlay = songQueue.get(counter); // I'll pass the variable 'counter' instead of '0'
+                    //songQueue.remove(0); // I'll remove this line of code so that song is not deleted from the playlist
+
+                    // Plays the song and waits for user input on whether the next song in the playlist should be played
+                    playNextSong = playSong(songToPlay);
+                    counter = counter + 1; // I'll add an expression to increment the variable whenever the 'Next' is selected from the menu
+                }
 
     [ ] What is a loop?
-        // ANSWER HERE:
+        // ANSWER HERE: Loop is used to iterate a part of the code several times.
 
     [ ] Write what each of these loops does in your own words:
-        // FOR LOOP:
-        // WHILE LOOP:
-        // DO WHILE:
+        // FOR LOOP: When you have a fixed number of iteration use For Loop
+        // WHILE LOOP: If the number of iteration is not fixed then use While Loop instead
+        // DO WHILE: If the number of iteration is not fixed and you need to execute the loop at least once then use Do While
 
     [ ] Why were 'infinite loops' used in this project? (See UserHelperMethods.displayOptionsAndWaitForValidOption(String[] options) for a reference)
-        // ANSWER HERE:
+        // ANSWER HERE: Infinite loop is used since the program accepts user input and it generate results continuously until the user exits from the program.
 
     [ ] This project has 3 packages (models, resources, and utils). Describe each one.
-        // MODELS:
-        // RESOURCES:
-        // UTILS:
+        // MODELS: It contains the classes with program logic and main methods.
+        // RESOURCES: It contains arrays of strings to store each of the options from the menu.
+        // UTILS: It contains helper methods or reusable code to keep us from repeating the same piece of code in different classes

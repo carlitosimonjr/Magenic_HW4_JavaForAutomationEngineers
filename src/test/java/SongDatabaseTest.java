@@ -19,6 +19,19 @@ public class SongDatabaseTest {
     public void testAddDeleteSong() {
         // TODO FOR HOMEWORK: Write a test for both adding and deleting songs from a song database
         SongDatabase database = new SongDatabase();
+        Song testSong = new Song("TestSong", "TestArtist");
+
+        //Adds song
+        database.addSong(testSong);
+
+        //Verifies the newly added song exists
+        Assert.assertTrue(database.getSongArchive().contains(testSong));
+
+        //Deletes song from the database
+        database.deleteSong(testSong);
+
+        //Verifies deleted song no longer exists in the database
+        Assert.assertFalse(database.getSongArchive().contains(testSong));
     }
 
     /**
@@ -29,6 +42,20 @@ public class SongDatabaseTest {
     public void testAddGetDeletePlaylist() {
         // TODO FOR HOMEWORK: Write a test for both adding and deleting playlists from a song database
         SongDatabase database = new SongDatabase();
+
+        String playlistName = "TestPlaylist";
+
+        //Creates playlist
+        database.createPlaylist(playlistName);
+
+        //Verifies the newly created playlist exists
+        Assert.assertTrue(database.getPlaylists().containsKey(playlistName));
+
+        //Deletes playlist
+        database.deletePlaylist(playlistName);
+
+        //Verifies deleted playlist no longer exists in the database
+        Assert.assertFalse(database.getPlaylists().containsKey(playlistName));
     }
 
     /**
